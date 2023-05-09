@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ark-exp-curve"
+version = "0.1.0"
+description = "App for calculating ARK Exp Curves"
+authors = ["Wes Hahn <52631646+wesh92@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "ark_exp_curve"}]
+
+[tool.poetry.dependencies]
+python = "3.10.6"
+streamlit = "^1.22.0"
+polars = "^0.17.12"
+matplotlib = "^3.7.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
