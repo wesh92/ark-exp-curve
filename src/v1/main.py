@@ -77,9 +77,6 @@ for tab, (_name, info) in zip(
 ):
     info["tab"] = tab
 
-exp_expander = st.expander("See EXP Table")
-ini_expander = st.expander("See INI Code")
-
 
 def create_data(curve_method: Callable[[int, int], int]) -> pl.DataFrame:
     data = pl.DataFrame({"Level": level_curve, "XP": [curve_method(i, st.session_state.base_exp) for i in level_curve]})
@@ -105,6 +102,7 @@ def generate_alt_chart_exp(data: pl.DataFrame) -> alt.Chart:
 
 def process_curve(tab, curve_name, curve_function) -> None:
     with tab:
+        ini_expander = st.expander("See INI Code")
         st.header(curve_name)
         data = create_data(curve_function)
 
@@ -115,6 +113,7 @@ def process_curve(tab, curve_name, curve_function) -> None:
         chart = generate_alt_chart_exp(data)
         table_data = data.with_columns(pl.col("XP").cumsum().alias("XP Total"))
         st.write(chart)
+        exp_expander = st.expander("See EXP Table")
         exp_expander.table(table_data.to_pandas())
     return
 
