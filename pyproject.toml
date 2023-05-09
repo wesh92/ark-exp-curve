@@ -5,7 +5,6 @@ description = "App for calculating ARK Exp Curves"
 authors = ["Wes Hahn <52631646+wesh92@users.noreply.github.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "ark_exp_curve"}]
 
 [tool.poetry.dependencies]
 python = "^3.10.6"
